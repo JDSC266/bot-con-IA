@@ -2,6 +2,7 @@
 database.py - Gestión de la base de datos SQLite
 Tablas: users | conversations | payments
 """
+import os
 import sqlite3
 import json
 import logging
@@ -13,6 +14,12 @@ logger = logging.getLogger(__name__)
 # ── Conexión ──────────────────────────────────────────────────────────────────
 
 def get_connection() -> sqlite3.Connection:
+    # 1. Extraemos la carpeta de la ruta y la creamos si no existe
+    carpeta = os.path.dirname(DATABASE_PATH)
+    if carpeta:
+        os.makedirs(carpeta, exist_ok=True)
+
+    # 2. Conectamos y configuramos la base de datos exactamente como la tenías
     conn = sqlite3.connect(DATABASE_PATH, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")   # mejor concurrencia
