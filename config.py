@@ -21,7 +21,6 @@ PAYPAL_PLAN_ID       = os.getenv("PAYPAL_PLAN_ID", "")
 WEBHOOK_URL      = os.getenv("WEBHOOK_URL", "")
 PORT             = int(os.getenv("PORT", "8080"))
 DATABASE_PATH    = os.getenv("DATABASE_PATH", "bot_database.db")
-RAILWAY_WEBHOOK  = os.getenv("RAILWAY_WEBHOOK", "")
 
 # ── Suscripción ───────────────────────────────────────────────────────────────
 TRIAL_DAYS            = 30
